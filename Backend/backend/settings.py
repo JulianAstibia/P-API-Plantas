@@ -10,21 +10,30 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
+from dotenv import load_dotenv
+
 from pathlib import Path
 from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Cargamos libreria dotenv desde la raiz
+load_dotenv(BASE_DIR/".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3*cf))6_g%-vc_(-2*ou%hz^3u%c@mw0rg-=fa$rmz^0+yjr8*'
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+# API PLANTA
+PERENUAL_API_KEY = os.getenv("PERENUAL_API_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
@@ -44,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'usuarios',
+    'plantas',
 ]
 
 MIDDLEWARE = [
@@ -152,3 +162,5 @@ CORS_ALLOWED_ORIGINS = [
 
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
+
+
