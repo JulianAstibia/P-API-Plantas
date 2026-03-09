@@ -29,5 +29,8 @@ export const ENDPOINT = {
         ME : 'me/',
         UPDATE : 'me/update/',
         CHANGE_PASSWORD : 'change-password/'
+    },
+    PLANT : {
+        BUSCAR : 'buscar/'
     }
 }

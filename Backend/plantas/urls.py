@@ -3,5 +3,6 @@ from .views import BuscarPlantaView
 
 
 urlpatterns = [
-    path('buscar/', BuscarPlantaView.as_view, name="buscar-planta"),
+    path('buscar/', BuscarPlantaView.as_view(), name="buscar-planta"),
+    
 ]

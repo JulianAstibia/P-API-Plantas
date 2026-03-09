@@ -26,11 +26,15 @@ load_dotenv(BASE_DIR/".env")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY") 
 
-# API PLANTA
+# API PLANTA 
+# Necesitaras loguearte en este enlace para conseguir la API_KEY y reemplazar en PERENUAL_API_KEY 
+# https://perenual.com/docs/api
 PERENUAL_API_KEY = os.getenv("PERENUAL_API_KEY")
+
+if not PERENUAL_API_KEY:
+    raise Exception("PERENUAL_API_KEY no está configurada")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
@@ -140,7 +144,7 @@ STATIC_URL = 'static/'
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticated",
+        "rest_framework.permissions.AllowAny",
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',

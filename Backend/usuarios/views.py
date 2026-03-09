@@ -5,12 +5,8 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth import get_user_model
 from .serializers import (
     RegistroSerializer, UserSerializer, ChangePasswordSerializer,
-    LoguotSerializer, VerificarEmailSerializer,
+    LogoutSerializer, VerificarEmailSerializer,
     )
-
-# Falta:
-#   Bloque de cuenta si no está verificado
-#   Enviar email de verificacion
 
 # Create your views here.
 Usuario = get_user_model()
@@ -18,7 +14,6 @@ Usuario = get_user_model()
 class RegistroView(generics.CreateAPIView):
     queryset = Usuario.objects.all()
     serializer_class = RegistroSerializer
-    permission_classes = [AllowAny]
 
 class MeView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
@@ -61,7 +56,7 @@ class ChangePasswordView(generics.GenericAPIView):
     
 
 class LogoutView(generics.GenericAPIView):
-    serializer_class = LoguotSerializer
+    serializer_class = LogoutSerializer
     permission_classes = [IsAuthenticated]
 
     def post(self, request):

@@ -3,9 +3,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .services import PerenualAPIError, buscar_planta
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class BuscarPlantaView(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         nombre = request.query_params.get("q")

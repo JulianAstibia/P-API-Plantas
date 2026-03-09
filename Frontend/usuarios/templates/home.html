@@ -11,9 +11,14 @@
 <body>
     {% include "includes/navbar.html" %}
 
-    <h1 class="text-center backgroun-color-primary">Wenas</h1>
+    <h1 class="text-center backgroun-color-primary">Buscar Planta</h1>
 
-    <!-- <script type="module" src="{% static 'js/pag/.js' %}"></script> -->
+    <input type="text" id="planta" placeholder="Nombre de la planta">
+    <button id="buscarBtn">Buscar</button>
+
+    <div id="resultado"></div>
+
+    <script type="module" src="{% static 'js/pag/home.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

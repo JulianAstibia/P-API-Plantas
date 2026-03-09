@@ -16,3 +16,6 @@ class Usuario(AbstractUser):
 
     USERNAME_FIELD= 'email'         # Cambie el campo de email para autenticar
     REQUIRED_FIELDS= ['username']
+
+    def __str__(self):
+        return self.email
