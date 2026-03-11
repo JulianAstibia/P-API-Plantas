@@ -1,12 +1,25 @@
 import requests
 from django.conf import settings
+from .models import HistorialBusqueda
 
 BASE_URL = "https://perenual.com/api/v2"
 
 class PerenualAPIError(Exception):
     pass
 
-def buscar_planta(nombre):
+
+def buscar_planta(nombre,user):
+    data = buscar_planta_api(nombre)
+    nombre = nombre.strip().lower()
+
+    HistorialBusqueda.objects.create(
+        usuario=user,
+        query=nombre
+    )
+    return data
+
+
+def buscar_planta_api(nombre):
     url = f'{BASE_URL}/species-list'
     params = {
         "key": settings.PERENUAL_API_KEY,

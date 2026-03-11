@@ -7,7 +7,7 @@ from django.conf import settings
 
 # Create your models here.
 class PlantasFavoritas(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="plantas_favoritas")
     id_planta_api = models.CharField(max_length=100) 
     nombre_comun = models.CharField(max_length=150)
     nombre_cientifico = models.CharField(max_length=150)
@@ -20,3 +20,15 @@ class PlantasFavoritas(models.Model):
 
     def __str__(self):
         return f"{self.nombre_comun} - {self.usuario}"
+    
+
+class HistorialBusqueda(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="historial_busqueda")
+    query = models.CharField(max_length=200)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-fecha"]
+
+    def __str__(self):
+        return f"{self.query} - {self.usuario}"

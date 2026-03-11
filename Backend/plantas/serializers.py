@@ -1,8 +1,13 @@
 from rest_framework import serializers
-from .models import PlantasFavoritas
+from .models import PlantasFavoritas, HistorialBusqueda
 
 class PlantasFavoritasSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlantasFavoritas
-        field = "__all__"
-        
+        fields = "__all__"
+
+
+class HistorialBusquedaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HistorialBusqueda
+        fields = "__all__"
