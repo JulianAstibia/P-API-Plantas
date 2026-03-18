@@ -55,7 +55,7 @@ python manage.py migrate
 python manage.py runserver
 
 ### 3. Configuracion del Frontend (React + Vite)
-Abre una nueva terminal
+# Abre una nueva terminal
 ```bash
 # 1. Entrar a la carpeta del frontend moderno
 cd Frontend+Vite+React
