@@ -1,12 +1,14 @@
 # 🌱 Proyecto de Gestión de Plantas
 
-¡Bienvenido a este proyecto de práctica! Este repositorio contiene una aplicación web orientada al consumo de una API externa de plantas. El proyecto está diseñado con una arquitectura separada que sirve como entorno de aprendizaje y desarrollo continuo, abarcando tanto el backend como múltiples enfoques para el frontend.
+Buenas! Este proyecto de práctica. Este repositorio contiene una aplicación web orientada al consumo de una API externa de plantas. El proyecto está diseñado con una arquitectura separada que sirve como entorno de aprendizaje y desarrollo continuo, abarcando tanto el backend como múltiples enfoques para el frontend.
 
 ## 🚀 Tecnologías Utilizadas
 
 ### Backend
-* **Framework:** Django (Python)
-* **Integración:** Consumo de API externa de plantas para obtener datos y características.
+* **Framework Core:** Django (Python)
+* **Construcción de API:** Django REST Framework (DRF) para el desarrollo de los endpoints.
+* **Autenticación:** JSON Web Tokens (JWT) para el manejo seguro de usuarios y sesiones.
+* **Integración y Configuración:** CORS configurado para la comunicación entre aplicaciones desacopladas, y consumo de una API externa de plantas para popular la base de datos.
 
 ### Frontend
 Actualmente, el proyecto cuenta con dos enfoques para la interfaz de usuario (ambos en fase de desarrollo):
