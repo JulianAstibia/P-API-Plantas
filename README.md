@@ -34,6 +34,7 @@ Si deseas correr este proyecto de manera local, sigue estos pasos:
 ```bash
 git clone [https://github.com/JulianAstibia/Proyectos.git](https://github.com/JulianAstibia/Proyectos.git)
 cd Proyectos
+```
 
 ### 2. Configuracion del Backend (Django)
 ```bash
@@ -53,6 +54,7 @@ pip install -r ../requeriment.txt
 # 5. Aplicar migraciones y levantar el servidor
 python manage.py migrate
 python manage.py runserver
+```
 
 ### 3. Configuracion del Frontend (React + Vite)
 # Abre una nueva terminal
@@ -65,3 +67,4 @@ npm install
 
 # 3. Levantar el servidor de desarrollo
 npm run dev
+```
