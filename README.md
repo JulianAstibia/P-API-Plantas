@@ -1,6 +1,6 @@
 # 🌱 Proyecto de Gestión de Plantas
 
-Buenas! Este proyecto de práctica. Este repositorio contiene una aplicación web orientada al consumo de una API externa de plantas. El proyecto está diseñado con una arquitectura separada que sirve como entorno de aprendizaje y desarrollo continuo, abarcando tanto el backend como múltiples enfoques para el frontend.
+Buenas! Es un proyecto de práctica. Este repositorio contiene una aplicación web orientada al consumo de una API externa de plantas. El proyecto está diseñado con una arquitectura separada que sirve como entorno de aprendizaje y desarrollo continuo, abarcando tanto el backend como múltiples enfoques para el frontend.
 
 ## 🚀 Tecnologías Utilizadas
 
