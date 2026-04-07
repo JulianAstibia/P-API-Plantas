@@ -1,4 +1,4 @@
-export const API_URL = "http://127.0.0.1:8000"
+export const API_URL = "http://127.0.0.1:8000/api"
 
 // Con .env para produccion real
 // export const API_URL = import.meta.env.VITE_API_URL;
@@ -6,10 +6,11 @@ export const API_URL = "http://127.0.0.1:8000"
 
 export const ENDPOINTS = {
     AUTH: {
-        LOGIN: "/api/login/",
-        LOGOUT: "/api/logout/",
-        REFRESH: "/api/token/refresh/",
-        ME: "/api/me/",
+        LOGIN: "/login/",
+        LOGOUT: "/logout/",
+        REFRESH: "/token/refresh/",
+        ME: "/me/",
     },
-    FAVORITAS: "/api/favoritas/",
+    FAVORITAS: "/favoritas/",
+    BUSCAR: "/buscar/"
 }

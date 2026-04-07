@@ -15,11 +15,11 @@ class BuscarPlantaView(APIView):
 
 
     def get(self, request):
-        nombre = request.query_params.get("q")
+        nombre = request.query_params.get("search") or request.query_params.get("q")
 
         if not nombre:
             return Response (
-                {"error": "Debes enviar ?q=nombre_planta"},
+                {"error": "Debes enviar ?search=nombre_planta"},
                 status=status.HTTP_400_BAD_REQUEST
             )
         
