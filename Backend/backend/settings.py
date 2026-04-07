@@ -150,8 +150,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_THROTTLE_RATES': {
-        'busquedas_anon':'2/day',
-        'busquedas_user': '5/day'
+        'busquedas_anon':'3/day',
+        'busquedas_user': '20/day'
     }
 }
 

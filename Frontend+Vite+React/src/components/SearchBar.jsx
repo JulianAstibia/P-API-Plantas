@@ -9,7 +9,6 @@ const SearchBar = ({ query, setQuery, onSearch, loading }) => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
             />
-
             <button 
                 className="btn btn-success"
                 disabled={loading}

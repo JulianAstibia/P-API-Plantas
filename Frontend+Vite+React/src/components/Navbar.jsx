@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
 
-const Navbar = ({isLogged, setIsLogged}) => {
+const Navbar = () => {
   const navigate = useNavigate()
+  const { isLogged, logout } = useAuth()
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -48,8 +50,7 @@ const Navbar = ({isLogged, setIsLogged}) => {
           </form>
           { isLogged ? (
             <button className="btn btn-outline-danger mx-2" onClick={()=> {
-              localStorage.removeItem("token")
-              setIsLogged(false)
+              logout()
               navigate("/")}
               }>Cerrar Sección</button>
           ) : (

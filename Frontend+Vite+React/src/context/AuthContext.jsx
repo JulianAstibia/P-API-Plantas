@@ -12,13 +12,15 @@ export const AuthProvider = ({children}) => {
         if (stored) setToken(stored)
     },[])
 
-    const login = async (email, password) => {
+    const loginUser = async (email, password) => {
         const data = await authService.login(email,password)
+        localStorage.setItem("token", data.access)
         setToken(data.access)
     }
 
     const logout = async () => {
         await authService.logout()
+        localStorage.removeItem("token")
         setToken(null)
     }
 
@@ -27,7 +29,7 @@ export const AuthProvider = ({children}) => {
         value={{
             token,
             isLogged: !!token,
-            login,
+            loginUser,
             logout,
         }}
         >

@@ -2,28 +2,19 @@ import { useState, useEffect} from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import PrivateRouter from "./components/PrivateRouter"
+import { useAuth } from "./context/AuthContext"
 
 import Inicio from "./pages/Inicio"
 import Favoritas from "./pages/Favoritas"
 import Login from "./pages/Login"
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false)
-  const [token, setToken] = useState(null)
-
-  useEffect(()=>{
-    const savedToken = localStorage.getItem("token")
-
-    if(savedToken){
-      setToken(savedToken)
-      setIsLogged(true)
-    }
-  },[])
-
+  const { isLogged } = useAuth()
+  
   return (
     <>
       <BrowserRouter>
-        <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
+        <Navbar />
         
         <div className="container mt-5">
           <Routes>
@@ -33,7 +24,7 @@ function App() {
                 <Favoritas />
               </PrivateRouter>} />
             <Route path="/login" element={ 
-              <Login setIsLogged={setIsLogged} setToken={setToken} />
+              <Login />
               } />
           </Routes>
         </div>

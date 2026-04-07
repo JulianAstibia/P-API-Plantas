@@ -1,22 +1,19 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { login } from "../services/authService"
+import { useAuth } from "../context/AuthContext"
 
-const Login = ({setIsLogged, setToken}) => {
+const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
+    const { loginUser } = useAuth()
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
 
         try{
-            const data = await login(email,password)
-            // guardamos el token
-            localStorage.setItem("token", data.access)
-
-            setToken(data.token)
-            setIsLogged(true)
+            const data = await loginUser(email, password)
 
             navigate("/") //redirige
         } catch(e){
