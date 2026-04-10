@@ -6,6 +6,7 @@ export const API_URL = "http://127.0.0.1:8000/api"
 
 export const ENDPOINTS = {
     AUTH: {
+        REGISTER: "/register/",
         LOGIN: "/login/",
         LOGOUT: "/logout/",
         REFRESH: "/token/refresh/",

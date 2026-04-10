@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import * as authService from "../services/authService"
-import { getAccessToken } from "../services/tokenService"
+import { clearToken, getAccessToken } from "../services/tokenService"
 
 const AuthContext = createContext()
 
@@ -14,14 +14,18 @@ export const AuthProvider = ({children}) => {
 
     const loginUser = async (email, password) => {
         const data = await authService.login(email,password)
-        localStorage.setItem("token", data.access)
         setToken(data.access)
     }
 
     const logout = async () => {
-        await authService.logout()
-        localStorage.removeItem("token")
-        setToken(null)
+        try {
+            await authService.logout()
+        } catch (error) {
+            console.warn("Error en logout:", error.message)
+        } finally {
+            clearToken()
+            setToken(null)
+        }
     }
 
     return (

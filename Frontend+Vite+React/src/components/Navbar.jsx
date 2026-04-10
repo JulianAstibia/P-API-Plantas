@@ -40,7 +40,7 @@ const Navbar = () => {
             )}
             { !isLogged && (
                 <li className="nav-item">
-                    <a className="nav-link disabled" aria-disabled="true">Registrarse</a>
+                    <Link className="nav-link" to={"/register"}>Registrarse</Link>
                 </li>
             )}
           </ul>

@@ -1,16 +1,13 @@
-import { useState, useEffect} from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import PrivateRouter from "./components/PrivateRouter"
-import { useAuth } from "./context/AuthContext"
 
 import Inicio from "./pages/Inicio"
 import Favoritas from "./pages/Favoritas"
 import Login from "./pages/Login"
+import Registrarse from "./pages/Registrarse"
 
 function App() {
-  const { isLogged } = useAuth()
-  
   return (
     <>
       <BrowserRouter>
@@ -23,9 +20,8 @@ function App() {
               <PrivateRouter>
                 <Favoritas />
               </PrivateRouter>} />
-            <Route path="/login" element={ 
-              <Login />
-              } />
+            <Route path="/login" element={ <Login />} />
+            <Route path="/register" element={ <Registrarse />} />
           </Routes>
         </div>
       </BrowserRouter>
