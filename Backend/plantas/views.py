@@ -24,7 +24,9 @@ class BuscarPlantaView(APIView):
             )
         
         try:
-            data= buscar_planta(nombre, request.user)
+            user = request.user if request.user.is_authenticated else None
+            data= buscar_planta(nombre, user)
+            
             return Response(data, status=status.HTTP_200_OK)
         
         except PerenualAPIError as e:

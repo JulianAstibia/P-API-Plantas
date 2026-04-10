@@ -8,15 +8,19 @@ class PerenualAPIError(Exception):
     pass
 
 
-def buscar_planta(nombre,user):
+def buscar_planta(nombre,user=None):
     data = buscar_planta_api(nombre)
     nombre = nombre.strip().lower()
 
-    HistorialBusqueda.objects.update_or_create(
-        usuario=user,
-        query=nombre,
-        defaults={}  # por si quisiera actualizar algun campo más adelante
-    )
+    try:
+        if user and user.is_authenticated:
+            HistorialBusqueda.objects.update_or_create(
+                usuario=user,
+                query=nombre,
+                defaults={}  # por si quisiera actualizar algun campo más adelante
+            )
+    except Exception:
+        pass
     return data
 
 
