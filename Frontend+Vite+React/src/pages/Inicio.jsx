@@ -7,6 +7,8 @@ const Inicio = () =>{
     const [query, setQuery] = useState("")
     const [resultado, setResultado] = useState([])
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
+    const [busqueda, setBusqueda] = useState(false)
 
     const handleBuscar = async (e) => {
         e.preventDefault()
@@ -15,12 +17,15 @@ const Inicio = () =>{
 
         try {
             setLoading(true)
+            setError(null)
+            setBusqueda(true)
 
             const data = await buscarPlantas(query)
             setResultado(data)
 
         } catch (error) {
             console.error("Error buscando plantas:", error)
+            setError(error.message)
         } finally {
             setLoading(false)
         }
@@ -39,9 +44,13 @@ const Inicio = () =>{
                         loading={loading}
                     />
 
-
-                    {/* ❌ Sin resultados */}
-                    {resultado.length === 0 && query && (
+                    {error && (
+                        <div className="alert alert-danger text-center mt-2">
+                            {error}
+                        </div>
+                    )}
+                    
+                    {!error && busqueda && resultado.length === 0 && (
                         <p className="text-center mt-2">No se encontraron resultados</p>
                     )}
 
