@@ -1,4 +1,4 @@
-import ImagenDesarrollo from "../assets/ed.png"
+import ImagenDesarrollo from "../assets/en-desarrollo2.png"
 
 const EnDesarrollo = () => {
     return(
