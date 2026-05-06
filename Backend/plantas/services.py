@@ -23,6 +23,18 @@ def buscar_planta(nombre,user=None):
         pass
     return data
 
+def detalle_planta_api(id_planta): # INCOMPLETO
+    url= f'{BASE_URL}/species/detail/{id_planta}'
+    param = {
+        "key": settings.PERENUAL_API_KEY,
+    }
+
+    try:
+        response = requests.get(url, params=param, timeout=10)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException:
+        return {}
 
 def buscar_planta_api(nombre):
     url = f'{BASE_URL}/species-list'

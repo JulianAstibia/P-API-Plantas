@@ -5,7 +5,7 @@ class PlantasFavoritasSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlantasFavoritas
         fields = "__all__"
-
+        read_only_fields = ["usuario"]
 
 class HistorialBusquedaSerializer(serializers.ModelSerializer):
     class Meta:

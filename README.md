@@ -1,72 +1,145 @@
-# 🌱 Proyecto de Gestión de Plantas
+# 🌱 Proyecto Buscador de Plantas
 
-Buenas! Es un proyecto de práctica. Este repositorio contiene una aplicación web orientada al consumo de una API externa de plantas. El proyecto está diseñado con una arquitectura separada que sirve como entorno de aprendizaje y desarrollo continuo, abarcando tanto el backend como múltiples enfoques para el frontend.
+Aplicación web full stack que permite explorar más de 3000 especies de plantas, guardar favoritas y gestionar información personalizada mediante autenticación segura.
 
-## 🚀 Tecnologías Utilizadas
+Desarrollada con Django REST + React, implementando sincronización global de favoritos y consumo de API externa.
+
+---
+
+## 🚀 Tecnologías utilizadas
 
 ### Backend
-* **Framework Core:** Django (Python)
-* **Construcción de API:** Django REST Framework (DRF) para el desarrollo de los endpoints.
-* **Autenticación:** JSON Web Tokens (JWT) para el manejo seguro de usuarios y sesiones.
-* **Integración y Configuración:** CORS configurado para la comunicación entre aplicaciones desacopladas, y consumo de una API externa de plantas para popular la base de datos.
+
+* Python
+* Django
+* Django REST Framework
+* JWT Authentication
 
 ### Frontend
-Actualmente, el proyecto cuenta con dos enfoques para la interfaz de usuario (ambos en fase de desarrollo):
-1. **Frontend con Django:** Implementado inicialmente usando el sistema de plantillas de Django para levantar el servidor y las vistas.
-2. **Frontend Moderno (SPA):** Desarrollado con **React** y empaquetado con **Vite**. Esta es la iteración más reciente, enfocada en mejorar la interactividad, el rendimiento y aplicar buenas prácticas en el ecosistema de JavaScript.
 
-## 📁 Estructura del Proyecto
+* React (Vite)
+* JavaScript
+* Bootstrap
 
-El repositorio está organizado de la siguiente manera:
+### Otros
 
-* `/Backend/`: Contiene toda la lógica del servidor, modelos y la integración con la API externa usando Django.
-* `/Frontend/`: Primera iteración de la interfaz construida con Django.
-* `/Frontend+Vite+React/`: Segunda iteración de la interfaz, construida como una Single Page Application (SPA) utilizando React y Vite.
-* `requeriment.txt`: Archivo con las dependencias necesarias de Python para ejecutar el backend.
-* `.env.example`: Plantilla para las variables de entorno necesarias (como claves de la API externa).
+* API externa de plantas
+* Git & GitHub
 
-## 🚧 Estado del Proyecto
-**En Desarrollo.** Ambos frontends se encuentran actualmente en construcción. Este repositorio es un espacio de práctica activa para el desarrollo backend con Python/Django y la creación de interfaces dinámicas con React.
+---
 
-## ⚙️ Instalación y Configuración Local
+## 🔐 Funcionalidades
 
-Si deseas correr este proyecto de manera local, sigue estos pasos:
+* Registro e inicio de sesión de usuarios
+* Autenticación mediante JWT
+* Búsqueda de plantas a través de API externa
+* Visualización de información de plantas
+* Guardado de plantas favoritas
+* Historial de búsquedas (en desarrollo)
 
-### 1. Clonar el repositorio
+---
+
+## 🧠 Descripción técnica
+
+La aplicación está construida con una arquitectura cliente-servidor:
+
+* El backend en Django expone una API REST segura mediante JWT.
+* El frontend en React consume esta API para mostrar la información al usuario.
+* Se integra una API externa para obtener datos de más de 3000 especies de plantas.
+* Se implementa persistencia de datos para usuarios, favoritos e historial.
+
+---
+
+## 📸 Screenshots
+
+### 🔐 Autenticación de usuarios
+![Login](./screenshots/login.png)
+
+### 🔍 Búsqueda de plantas en tiempo real
+![Busqueda](./screenshots/buscar.png)
+
+### ⭐ Gestión de Favoritos
+![Favoritos](./screenshots/favoritos.png)
+---
+
+## 🌐 Demo
+
+*(Agregar link cuando deployes el proyecto)*
+
+---
+
+## ⚙️ Instalación y uso
+
+### 1. Clonar repositorio
+
 ```bash
-git clone [https://github.com/JulianAstibia/Proyectos.git](https://github.com/JulianAstibia/Proyectos.git)
-cd Proyectos
+git clone https://github.com/JulianAstibia/P-API-Plantas.git
+cd P-API-Plantas
 ```
 
-### 2. Configuracion del Backend (Django)
+---
+
+### 2. Backend (Django)
+
 ```bash
-# 1. Entrar a la carpeta del backend
-cd Backend
-
-# 2. Crear y activar un entorno virtual (recomendado)
+cd backend
 python -m venv venv
-source venv/bin/activate  # En Windows usa: venv\Scripts\activate
-
-# 3. Instalar las dependencias
-pip install -r ../requeriment.txt
-
-# 4. Configurar variables de entorno
-# Copia el archivo .env.example, renómbralo a .env en la raíz del backend y completa los datos necesarios de la API.
-
-# 5. Aplicar migraciones y levantar el servidor
+source venv/bin/activate  # En Windows: venv\Scripts\activate
+pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
 
-### 3. Configuracion del Frontend (React + Vite)
-# Abre una nueva terminal
+---
+
+### 3. Frontend (React)
+
 ```bash
-# 1. Entrar a la carpeta del frontend moderno
-cd Frontend+Vite+React
-
-# 2. Instalar dependencias de Node
+cd frontend
 npm install
-
-# 3. Levantar el servidor de desarrollo
 npm run dev
 ```
+
+---
+
+## 🔑 Variables de entorno
+
+Crear un archivo `.env` en el backend con:
+
+```
+SECRET_KEY=tu_clave
+DEBUG=True
+```
+
+*(Agregar otras variables si usás API keys)*
+
+---
+
+## 📌 Estado del proyecto
+
+🚧 En desarrollo
+
+Actualmente se están implementando mejoras en experiencia de usuario y nuevas funcionalidades.
+
+### Próximas mejoras
+
+* Historial de búsquedas funcional
+* Mejoras en UI/UX
+* Deploy en producción
+
+---
+
+## 🎯 Objetivo del proyecto
+
+Este proyecto fue desarrollado como parte de mi aprendizaje en desarrollo full stack, con el objetivo de aplicar buenas prácticas en:
+
+* Diseño de APIs REST
+* Manejo de estado en frontend
+* Autenticación segura con JWT
+* Integración con APIs externas
+
+---
+
+## 📄 Licencia
+
+Proyecto de uso educativo y como portfolio personal.

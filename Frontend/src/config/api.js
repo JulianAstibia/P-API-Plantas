@@ -12,6 +12,6 @@ export const ENDPOINTS = {
         REFRESH: "/token/refresh/",
         ME: "/me/",
     },
-    FAVORITAS: "/favoritas/",
+    FAVORITAS: "/plantas-favoritas/",
     BUSCAR: "/buscar/"
 }

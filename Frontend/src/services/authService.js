@@ -1,7 +1,7 @@
 import { use } from "react"
 import { ENDPOINTS } from "../config/api"
 import { apiRequest } from "./api"
-import { setToken, getRefreshToken, clearToken } from "./tokenService"
+import { setToken, getAccessToken, getRefreshToken, clearToken } from "./tokenService"
 
 
 export const login = async (email, password) => {
@@ -35,5 +35,16 @@ export const register = async (email, username, password, password2) => {
         "POST",
         {email, username, password, password2}
     )
+    return data
+}
+
+export const getMe = async () => {
+    const token = getAccessToken()
+
+    const data = await apiRequest(
+        ENDPOINTS.AUTH.ME,
+        "GET"
+    )
+
     return data
 }

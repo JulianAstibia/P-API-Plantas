@@ -8,10 +8,10 @@ from django.conf import settings
 # Create your models here.
 class PlantasFavoritas(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="plantas_favoritas")
-    id_planta_api = models.CharField(max_length=100) 
+    id_planta_api = models.PositiveIntegerField()
     nombre_comun = models.CharField(max_length=150)
     nombre_cientifico = models.CharField(max_length=150)
-    imagen = models.URLField(blank=True)
+    imagen = models.URLField(max_length=1000, blank=True)
     agregado = models.DateTimeField(auto_now_add=True)
 
     class Meta:

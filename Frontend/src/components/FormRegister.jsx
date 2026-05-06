@@ -34,9 +34,9 @@ const FormRegister = () =>{
     return(
         <form className="text-start" onSubmit={handleSubmit}>
             <div className="my-2">
-                <label className="form-label ">Email</label>
+                <label className="form-label">Email</label>
                 <input 
-                    className="form-control"
+                    className="form-control text-secondary"
                     type="email" 
                     name="email" 
                     placeholder="Ingresar email" 
@@ -44,9 +44,9 @@ const FormRegister = () =>{
                 />
             </div>
             <div className="my-2">
-                <label className="form-label ">Nombre de Usuario</label>
+                <label className="form-label">Nombre de Usuario</label>
                 <input 
-                    className="form-control"
+                    className="form-control text-secondary"
                     type="text"
                     name="username"
                     placeholder="Ingresar nombre de usuario" 
@@ -54,9 +54,9 @@ const FormRegister = () =>{
                 />
             </div>
             <div className="my-2">
-                <label className="form-label ">Contraseña</label>
+                <label className="form-label">Contraseña</label>
                 <input 
-                    className="form-control"
+                    className="form-control text-secondary"
                     type="password"
                     name="password"
                     placeholder="Ingresar constraseña"
@@ -64,9 +64,9 @@ const FormRegister = () =>{
                 />
             </div>
             <div className="my-2">
-                <label className="form-label ">Repetir Contraseña</label>
+                <label className="form-label">Repetir Contraseña</label>
                 <input 
-                    className="form-control"
+                    className="form-control text-secondary"
                     type="password"
                     name="password2"
                     placeholder="Repetir constraseña"

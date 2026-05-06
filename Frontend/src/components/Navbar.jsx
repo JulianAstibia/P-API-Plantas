@@ -30,7 +30,9 @@ const Navbar = () => {
             )}
             { isLogged && (
                 <li className="nav-item">
-                    <a className="nav-link disabled" aria-disabled="true">Historial</a>
+                  <Link className="nav-link" to={"/historial"}>
+                    Historial
+                  </Link>
                 </li>
             )}
             { isLogged && (
@@ -44,10 +46,7 @@ const Navbar = () => {
                 </li>
             )}
           </ul>
-          <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Buscar planta" aria-label="Search"/>
-            <button className="btn btn-outline-success" type="submit">Buscar</button>
-          </form>
+          
           { isLogged ? (
             <button className="btn btn-outline-danger mx-2" onClick={()=> {
               logout()

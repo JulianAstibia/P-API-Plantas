@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import PlantCard from "../components/PlantCard.jsx"
 import SearchBar from "../components/SearchBar.jsx"
 import { buscarPlantas } from "../services/plantasService.js"
+import { useAuth } from "../context/AuthContext.jsx"
 
 const Inicio = () =>{
     const [query, setQuery] = useState("")
@@ -9,6 +10,7 @@ const Inicio = () =>{
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const [busqueda, setBusqueda] = useState(false)
+    const { user } = useAuth()
 
     const handleBuscar = async (e) => {
         e.preventDefault()
@@ -35,7 +37,9 @@ const Inicio = () =>{
         <main className="container ">
             <div className="d-flex justify-content-center align-items-center"> 
                 <section className="row bg-light rounded-5 p-4 shadow">
-                    <h2 className="text-center">Bienvenidos</h2>
+                    <h2 className="text-center">
+                       {user ? `Bienvenido ${user.username}!` : "Bienvenido"}
+                    </h2>
                     
                     <SearchBar
                         query={query}
@@ -44,26 +48,32 @@ const Inicio = () =>{
                         loading={loading}
                     />
 
+                    {loading && (
+                        <p className="text-center mt-3">Buscando...</p>
+                    )}
+                    
                     {error && (
                         <div className="alert alert-danger text-center mt-2">
                             {error}
                         </div>
                     )}
                     
-                    {!error && busqueda && resultado.length === 0 && (
+                    {!loading && !error && busqueda && resultado.length === 0 && (
                         <p className="text-center mt-2">No se encontraron resultados</p>
                     )}
 
-                    <div className="row mt-3">
-                        {resultado.map((planta) => (
-                            <div 
-                                key={planta.id}
-                                className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
-                            >
-                                <PlantCard planta={planta} />
-                            </div>
-                        ))}
-                    </div>
+                    {busqueda && (
+                        <div className="row mt-3">
+                            {resultado.map((planta) => (
+                                <div 
+                                    key={planta.id}
+                                    className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
+                                >
+                                    <PlantCard planta={planta} />
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </section>
             </div>
         </main>

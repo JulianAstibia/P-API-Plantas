@@ -4,6 +4,7 @@ import PrivateRouter from "./components/PrivateRouter"
 
 import Inicio from "./pages/Inicio"
 import Favoritas from "./pages/Favoritas"
+import Historial from "./pages/Historial"
 import Login from "./pages/Login"
 import Registrarse from "./pages/Registrarse"
 
@@ -19,6 +20,10 @@ function App() {
             <Route path="/favoritas" element={
               <PrivateRouter>
                 <Favoritas />
+              </PrivateRouter>} />
+            <Route path="/historial" element={
+              <PrivateRouter>
+                <Historial/>
               </PrivateRouter>} />
             <Route path="/login" element={ <Login />} />
             <Route path="/register" element={ <Registrarse />} />
