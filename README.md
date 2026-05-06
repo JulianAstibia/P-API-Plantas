@@ -109,9 +109,6 @@ Crear un archivo `.env` en el backend con:
 ```
 SECRET_KEY=tu_clave
 DEBUG=True
-```
-
-*(Agregar otras variables si usás API keys)*
 
 ---
 
