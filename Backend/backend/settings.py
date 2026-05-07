@@ -41,8 +41,11 @@ if not PERENUAL_API_KEY:
 DEBUG = os.getenv("DEBUG") == "True"
 
 # ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-ALLOWED_HOSTS = ["p-api-plantas.onrender.com"]
+ALLOWED_HOSTS = ["p-api-plantas.onrender.com","127.0.0.1"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://p-api-plantas.onrender.com",
+]
 # Application definition
 
 INSTALLED_APPS = [
