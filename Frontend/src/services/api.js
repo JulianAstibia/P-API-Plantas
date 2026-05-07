@@ -55,15 +55,14 @@ export const apiRequest = async (endpoint, method= "GET", body = null) => {
 
         console.log("ERROR BACKEND COMPLETO:", data)
 
-        if (response.status === 429) throw new Error( "Límite de búsqueda alcanzado. Intentá más tarde.")
-        if (response.status === 500) throw new Error( "Error interno del servidor")
-        if (response.status === 404) throw new Error( "Recurso no encontrado")
+        if (response.status === 429) throw {general: ["Límite de búsqueda alcanzado. Intentá más tarde."]}
+        if (response.status === 500) throw {general: ["Error interno del servidor"]}
+        if (response.status === 404) throw {general: ["Recurso no encontrado"]}
         
-        throw new Error( JSON.stringify(data))
+        throw data
     }
 
     if (response.status === 204) return null
 
     return response.json()
 }
-

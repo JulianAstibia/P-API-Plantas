@@ -51,9 +51,9 @@ const Navbar = () => {
             <button className="btn btn-outline-danger mx-2" onClick={()=> {
               logout()
               navigate("/")}
-              }>Cerrar Sección</button>
+              }>Cerrar Sesión</button>
           ) : (
-            <Link className="btn btn-outline-primary mx-2" to="/login">Iniciar Sección</Link>
+            <Link className="btn btn-outline-primary mx-2" to="/login">Iniciar Sesión</Link>
           )}
         </div>
       </div>

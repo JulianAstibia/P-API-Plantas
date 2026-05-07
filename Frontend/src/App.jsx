@@ -7,6 +7,7 @@ import Favoritas from "./pages/Favoritas"
 import Historial from "./pages/Historial"
 import Login from "./pages/Login"
 import Registrarse from "./pages/Registrarse"
+import Forgot from "./pages/Forgot"
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               </PrivateRouter>} />
             <Route path="/login" element={ <Login />} />
             <Route path="/register" element={ <Registrarse />} />
+            <Route path="/forgot" element={ <Forgot />} />
           </Routes>
         </div>
       </BrowserRouter>

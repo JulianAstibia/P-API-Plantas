@@ -5,11 +5,13 @@ from django.contrib.auth.models import AbstractUser
 
 # AbstractUser tiene por defecto: 
 #   username, password, last_login --> campos de autenticacion
+#   username(es unico)
 #   first_name, last_name, email(no es unico) --> informacion personal
 #   is_staff, is_active, is_superuser, groups, user_permissions --> permisos y estados
 #   date_joined --> fecha de creacion del usuario
 
 class Usuario(AbstractUser):
+    username = models.CharField(max_length=150, unique=False)
     email= models.EmailField(unique=True) # lo modifique a unico
     verificado= models.BooleanField(default=False)
     actualizado= models.DateTimeField(auto_now=True)
