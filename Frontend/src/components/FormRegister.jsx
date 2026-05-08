@@ -10,6 +10,7 @@ const FormRegister = () =>{
         password2: ""
     })
     const [errors, setErrors] =useState({})
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -22,13 +23,16 @@ const FormRegister = () =>{
     const handleSubmit = async (e) =>{
         e.preventDefault()
         setErrors({})
-
+        setLoading(false)
+        
         try{
             await register(form.email, form.username, form.password, form.password2)
             alert("Usuario creado correctamente")
             navigate("/login")
         } catch (err){
             setErrors(err)
+        }finally { 
+            setLoading(true)
         }
     }
     return(
@@ -99,7 +103,12 @@ const FormRegister = () =>{
                     {errors.non_field_errors [0]}
                 </div>
             )}
+            
             <button className="btn btn-primary col-12 " type="submit">Registrarse</button>
+
+            {loading && (
+                <p className="text-center mt-3">Espere un momento...</p>
+            )}
         </form>
     )
 }

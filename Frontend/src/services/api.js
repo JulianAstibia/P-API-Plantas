@@ -20,7 +20,7 @@ export const apiRequest = async (endpoint, method= "GET", body = null) => {
     let response = await makeRequest(access)
 
     // Refresh automatico
-    if (response.status === 401){
+    if (response.status === 401 && access && endpoint !== ENDPOINTS.AUTH.LOGIN){
         const refresh = getRefreshToken()
 
         if (!refresh){
@@ -55,6 +55,7 @@ export const apiRequest = async (endpoint, method= "GET", body = null) => {
 
         console.log("ERROR BACKEND COMPLETO:", data)
 
+        if (response.status === 401) throw {general: ["Email o contraseña inválida"]}
         if (response.status === 429) throw {general: ["Límite de búsqueda alcanzado. Intentá más tarde."]}
         if (response.status === 500) throw {general: ["Error interno del servidor"]}
         if (response.status === 404) throw {general: ["Recurso no encontrado"]}
