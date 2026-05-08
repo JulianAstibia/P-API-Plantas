@@ -23,8 +23,8 @@ const FormRegister = () =>{
     const handleSubmit = async (e) =>{
         e.preventDefault()
         setErrors({})
-        setLoading(false)
-        
+        setLoading(true)
+
         try{
             await register(form.email, form.username, form.password, form.password2)
             alert("Usuario creado correctamente")
@@ -32,7 +32,7 @@ const FormRegister = () =>{
         } catch (err){
             setErrors(err)
         }finally { 
-            setLoading(true)
+            setLoading(false)
         }
     }
     return(
