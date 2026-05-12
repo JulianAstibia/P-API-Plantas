@@ -1,8 +1,10 @@
 body{
+    min-height: 100%;
     background-image: url("assets/fondo.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 

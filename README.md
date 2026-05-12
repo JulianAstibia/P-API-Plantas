@@ -64,7 +64,7 @@ La aplicación está construida con una arquitectura cliente-servidor:
 
 ## 🌐 Demo
 
-*(Agregar link cuando deployes el proyecto)*
+*(https://p-api-plantas.vercel.app/)*
 
 ---
 
