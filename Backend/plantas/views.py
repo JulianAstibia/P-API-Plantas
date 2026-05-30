@@ -8,7 +8,7 @@ from .models import PlantasFavoritas, HistorialBusqueda
 from .serializers import PlantasFavoritasSerializer, HistorialBusquedaSerializer
 from .throttles import BusquedaAnonimoThrottle, BusquedaUsuarioThrottles
 from .services.api_plant_service import PerenualAPIError, buscar_planta
-from .services.traduccion_service import traducir
+# from .services.traduccion_service import traducir
 
 # Create your views here.
 class BuscarPlantaView(APIView):

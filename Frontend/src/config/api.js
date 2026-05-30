@@ -15,5 +15,3 @@ export const ENDPOINTS = {
     FAVORITAS: "/plantas-favoritas/",
     BUSCAR: "/buscar/"
 }
-
-console.log(import.meta.env.VITE_API_URL)
