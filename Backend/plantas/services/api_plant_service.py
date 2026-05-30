@@ -1,6 +1,6 @@
 import requests
 from django.conf import settings
-from .models import HistorialBusqueda
+from ..models import HistorialBusqueda
 
 BASE_URL = "https://perenual.com/api/v2"
 
@@ -44,12 +44,15 @@ def buscar_planta_api(nombre):
     }
 
     try:
-        response = requests.get(url, params=params, timeout=10)
+        response = requests.get(url, params=params, timeout=20)
         response.raise_for_status()
         return response.json()
 
     except requests.exceptions.Timeout:
-        raise PerenualAPIError("La API externa tardó demasiado en responder")
+        raise PerenualAPIError("PerenualAPI tardó demasiado en responder")
+    
+    except requests.exceptions.ConnectionError:
+        raise PerenualAPIError("No se pudo conectar con PerenualAPI")
     
     except requests.exceptions.RequestException as e:
-        raise PerenualAPIError(f"Error al conectar con API externa: {str(e)}")
+        raise PerenualAPIError(f"Error al conectar con PerenualAPI: {str(e)}")

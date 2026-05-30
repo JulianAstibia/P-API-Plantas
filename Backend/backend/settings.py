@@ -178,7 +178,8 @@ CACHES = {
 
 CORS_ALLOWED_ORIGINS = [
     "https://p-api-plantas.vercel.app",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "http://localhost:5000"
 ]
 
 
