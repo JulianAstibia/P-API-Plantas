@@ -1,7 +1,11 @@
+from django.conf import settings
 import requests
 
-BASE_URL = "http://localhost:5000"
+EN_PRODUCCION = settings.LIBRETRANSLATE_URL
+EN_DESARROLLO = "http://localhost:5000"
 
+BASE_URL = EN_PRODUCCION
+    
 class LibreTranslateAPIError(Exception):
     pass
 

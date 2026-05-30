@@ -40,6 +40,9 @@ if not PERENUAL_API_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
 
+PENENUAL_URL = os.getenv("PENENUAL_URL")
+LIBRETRANSLATE_URL = os.getenv("LIBRETRANSLATE_URL")
+
 # ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 ALLOWED_HOSTS = ["p-api-plantas.onrender.com","127.0.0.1"]
 

@@ -2,7 +2,7 @@ import requests
 from django.conf import settings
 from ..models import HistorialBusqueda
 
-BASE_URL = "https://perenual.com/api/v2"
+BASE_URL = settings.PENENUAL_URL
 
 class PerenualAPIError(Exception):
     pass
