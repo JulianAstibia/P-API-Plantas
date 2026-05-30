@@ -8,7 +8,7 @@ from .models import PlantasFavoritas, HistorialBusqueda
 from .serializers import PlantasFavoritasSerializer, HistorialBusquedaSerializer
 from .throttles import BusquedaAnonimoThrottle, BusquedaUsuarioThrottles
 from .services.api_plant_service import PerenualAPIError, buscar_planta
-# from .services.traduccion_service import traducir
+from .services.traduccion_service import traducir
 
 # Create your views here.
 class BuscarPlantaView(APIView):
@@ -30,28 +30,28 @@ class BuscarPlantaView(APIView):
             tr_en = "en"
             tr_es = "es"
             # Traducimos al ingles 
-            # nombre = traducir(nombre, tr_en)
+            nombre = traducir(nombre, tr_en)
 
             user = request.user if request.user.is_authenticated else None
             data= buscar_planta(nombre, user)
 
-            #Traducimos al español
-            # try:
-            #     campos_a_traducir = [
-            #         "common_name"
-            #     ]
+            # Traducimos al español
+            try:
+                campos_a_traducir = [
+                    "common_name"
+                ]
 
-            #     if "data" in data:
-            #         for planta in data["data"]:
-            #             for campo in campos_a_traducir:
-            #                 if planta.get(campo):
-            #                     planta[campo] = traducir(
-            #                         planta[campo],
-            #                         tr_es
-            #                     )
+                if "data" in data:
+                    for planta in data["data"]:
+                        for campo in campos_a_traducir:
+                            if planta.get(campo):
+                                planta[campo] = traducir(
+                                    planta[campo],
+                                    tr_es
+                                )
 
-            # except Exception as e:
-            #     pass
+            except Exception as e:
+                pass
 
             return Response(data, status=status.HTTP_200_OK)
         
