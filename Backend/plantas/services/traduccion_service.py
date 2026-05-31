@@ -1,48 +1,25 @@
-from django.conf import settings
-import requests
+from deep_translator import GoogleTranslator, exceptions
 
-EN_PRODUCCION = settings.LIBRETRANSLATE_URL
-EN_DESARROLLO = "http://localhost:5000"
 
-BASE_URL = EN_PRODUCCION
-    
-class LibreTranslateAPIError(Exception):
+class TraduccionError(Exception):
     pass
 
 def traducir(text, target):
-    url = f'{BASE_URL}/translate'
-    params = {
-        "q" : text,
-        "source" : "auto",
-        "target" : target,
-        "format" :"text"
-    }
-
     try:
-        response = requests.post(
-            url, 
-            json= params,
-            # headers={
-            #     "Content-Type": "application/json"
-            # }, NO ES NECESARIO AGREGAR HEADERS - REQUESTS LO AGREGA DE FORMA AUTOMATICA   
-            timeout=15
-        )
-        response.raise_for_status()
-        data= response.json()
-
-        translatedText = data.get("translatedText")
-
-        if not translatedText:
-            raise LibreTranslateAPIError("LibreTranslate no devolvió translatedText")
-        
-        return translatedText
-
-    except requests.exceptions.Timeout:
-        raise LibreTranslateAPIError("La API externa de LibreTranslate tardó demasiado en responder")
+        traducir_texto = GoogleTranslator(
+            source= "auto",
+            target= target
+        ).translate(text)
+        return traducir_texto
     
-    except requests.exceptions.ConnectionError:
-        raise LibreTranslateAPIError("No se pudo conectar con LibreTranslate")
+    except exceptions.TooManyRequests:
+        raise TraduccionError("Limite de traducciones alcanzadas")
     
-    except requests.exceptions.RequestException as e:
-        raise LibreTranslateAPIError(f"Error al conectar con LibreTranslate: {str(e)}")
+    except exceptions.TranslationNotFound:
+        raise TraduccionError("No se pudo traducir el texto")
     
+    except exceptions.RequestError:
+        raise TraduccionError("No se pudo conectar con el servidor de traducción")
+    
+    except Exception as e:
+        raise TraduccionError(f"Error inesperado: {str(e)}")
