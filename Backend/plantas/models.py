@@ -22,6 +22,17 @@ class PlantasFavoritas(models.Model):
         return f"{self.nombre_comun} - {self.usuario}"
     
 
+class Traducciones(models.Model):
+    texto_original = models.CharField(max_length=500)
+    idioma_objetivo = models.CharField(max_length=10)
+    traduccion = models.CharField(max_length=500)
+
+    class Meta:
+        unique_together = (
+            "texto_original",
+            "idioma_objetivo"
+        )
+
 class HistorialBusqueda(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="historial_busqueda")
     query = models.CharField(max_length=200)

@@ -1,4 +1,5 @@
 from deep_translator import GoogleTranslator, exceptions
+from ..models import Traducciones
 
 
 class TraduccionError(Exception):
@@ -6,10 +7,24 @@ class TraduccionError(Exception):
 
 def traducir(text, target):
     try:
+        tr_bd= Traducciones.objects.filter(
+            texto_original = text,
+            idioma_objetivo = target
+        ).first()
+        if tr_bd:
+            return tr_bd.traduccion
+
         traducir_texto = GoogleTranslator(
             source= "auto",
             target= target
         ).translate(text)
+
+        Traducciones.objects.create(
+            texto_original = text,
+            idioma_destino = target,
+            traduccion = traducir_texto
+        )
+
         return traducir_texto
     
     except exceptions.TooManyRequests:
