@@ -21,7 +21,7 @@ def traducir(text, target):
 
         Traducciones.objects.create(
             texto_original = text,
-            idioma_destino = target,
+            idioma_objetivo = target,
             traduccion = traducir_texto
         )
 
