@@ -1,6 +1,7 @@
 import requests
 from django.conf import settings
 from ..models import HistorialBusqueda
+from .traduccion_service import traducir
 
 BASE_URL = settings.PENENUAL_URL
 
@@ -9,8 +10,11 @@ class PerenualAPIError(Exception):
 
 
 def buscar_planta(nombre,user=None):
-    data = buscar_planta_api(nombre)
+    tr_en = "en"
     nombre = nombre.strip().lower()
+    nombre_ingles = traducir(nombre,tr_en)
+
+    data = buscar_planta_api(nombre_ingles)
 
     try:
         if user and user.is_authenticated:

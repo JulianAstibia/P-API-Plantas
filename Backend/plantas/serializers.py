@@ -7,6 +7,9 @@ class PlantasFavoritasSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = ["usuario"]
 
+class IdentificarPlantasSerializer(serializers.Serializer):
+    image = serializers.ImageField()
+
 class HistorialBusquedaSerializer(serializers.ModelSerializer):
     class Meta:
         model = HistorialBusqueda

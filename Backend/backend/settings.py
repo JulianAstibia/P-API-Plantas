@@ -12,17 +12,23 @@ load_dotenv(BASE_DIR/".env")
 
 SECRET_KEY = os.getenv("SECRET_KEY") 
 
-# API PLANTA 
+# API PLANTAS
+# https://my.plantnet.org/doc/api/openapi
+PLANTNET_API_KEY = os.getenv("PLANTNET_API_KEY")
+if not PLANTNET_API_KEY:
+    raise Exception("PLANTNET_API_KEY no está configurada")
+
+PLANTNET_URL = os.getenv("PLANTNET_URL")
+
 # https://perenual.com/docs/api
 PERENUAL_API_KEY = os.getenv("PERENUAL_API_KEY")
 
 if not PERENUAL_API_KEY:
     raise Exception("PERENUAL_API_KEY no está configurada")
 
+PENENUAL_URL = os.getenv("PENENUAL_URL")
 
 DEBUG = os.getenv("DEBUG") == "True"
-
-PENENUAL_URL = os.getenv("PENENUAL_URL")
 
 ALLOWED_HOSTS = [
     "p-api-plantas.onrender.com",
