@@ -101,12 +101,15 @@ class IdentificarPlantaView(APIView):
 
         try:
             nombre_comun, nombre_cientifico, probabilidad = obtener_nombre_cientifico(imagen)
+            print("Plantnet OK")
             user = request.user if request.user.is_authenticated else None
             data = buscar_planta(nombre_cientifico, user)
+            print("Perenual OK con Nombre cientifico")
             if not data.get("data"):
                 for name in nombre_comun:
                     data = buscar_planta(name, user)
                     if data.get("data"):
+                        print("Perenual OK con nombre comun")
                         break
             
             try:
