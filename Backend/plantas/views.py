@@ -18,7 +18,7 @@ class BuscarPlantaView(APIView):
 
     def get(self, request):
         nombre = request.query_params.get("search") or request.query_params.get("q")
-
+        
         if not nombre:
             return Response (
                 {"error": "Debes enviar ?search=nombre_planta"},
@@ -141,6 +141,8 @@ class IdentificarPlantaView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             return Response(
                 {"error": str(e)},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
