@@ -5,9 +5,9 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from .models import PlantasFavoritas, HistorialBusqueda
-from .serializers import PlantasFavoritasSerializer, IdentificarPlantasSerializer, HistorialBusquedaSerializer
+from .serializers import PlantasFavoritasSerializer, IdentificarPlantasSerializer, HistorialBusquedaSerializer, BuscarPlantasSerializer, PlantaDetalleSerializer
 from .throttles import BusquedaAnonimoThrottle, BusquedaUsuarioThrottles
-from .services.api_plant_service import PerenualAPIError, buscar_planta
+from .services.api_plant_service import PerenualAPIError, buscar_planta, detalle_planta_api
 from .services.traduccion_service import traducir
 from .services.identificar_service import PlantnetError, obtener_nombre_cientifico
 
@@ -52,11 +52,25 @@ class BuscarPlantaView(APIView):
             return Response(data, status=status.HTTP_200_OK)
         
         except PerenualAPIError as e:
-            print(e)
             return Response(
                 {'error': str(e)},
                 status=status.HTTP_502_BAD_GATEWAY
             )
+
+class DetallesPlantaView(APIView):
+    permission_classes = [AllowAny]
+    
+    def get(self,request, id_planta):
+        try:    
+            data = detalle_planta_api(id_planta)
+            return Response(data, status=status.HTTP_200_OK)
+        
+        except PerenualAPIError as e:
+            return Response(
+                {'error': str(e)},
+                status=status.HTTP_502_BAD_GATEWAY
+            )
+
 
 class PlantasFavoritasView(ModelViewSet):
     serializer_class = PlantasFavoritasSerializer

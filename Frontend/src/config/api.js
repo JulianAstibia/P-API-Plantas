@@ -14,5 +14,6 @@ export const ENDPOINTS = {
         ME: "/me/",
     },
     FAVORITAS: "/plantas-favoritas/",
-    BUSCAR: "/buscar/"
+    BUSCAR: "/buscar/",
+    IDENTIFICAR: "/identificar-planta/"
 }

@@ -5,15 +5,22 @@ export const apiRequest = async (endpoint, method= "GET", body = null) => {
     let access = getAccessToken()
 
     const makeRequest = async(token)=> {
+        const isFormData = body instanceof FormData
+
         const headers = {
-            "Content-Type": "application/json",
             ...(token && {Authorization: `Bearer ${token}`}),
         }
-        
+        if (!isFormData) {
+            headers["Content-type"] = "application/json"
+        }
         return fetch(`${API_URL}${endpoint}`,{
             method,
             headers,
-            body: body ? JSON.stringify(body) : null,
+            body: body 
+                ? (isFormData 
+                    ? body 
+                    :JSON.stringify(body)) 
+                : null,
         })
     }
 
