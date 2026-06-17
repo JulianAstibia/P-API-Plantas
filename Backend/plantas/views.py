@@ -18,7 +18,7 @@ class BuscarPlantaView(APIView):
 
     def get(self, request):
         nombre = request.query_params.get("search") or request.query_params.get("q")
-        print("iniciando busqueda por nombre")
+
         if not nombre:
             return Response (
                 {"error": "Debes enviar ?search=nombre_planta"},
@@ -95,6 +95,7 @@ class IdentificarPlantaView(APIView):
     throttle_classes = [BusquedaAnonimoThrottle, BusquedaUsuarioThrottles]
 
     def post(self,request):
+        print("Iniciando request")
         serializer = IdentificarPlantasSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         imagen = serializer.validated_data["image"]
