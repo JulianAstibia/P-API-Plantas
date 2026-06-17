@@ -100,6 +100,7 @@ class IdentificarPlantaView(APIView):
         imagen = serializer.validated_data["image"]
 
         try:
+            print("Iniciando Busqueda")
             nombre_comun, nombre_cientifico, probabilidad = obtener_nombre_cientifico(imagen)
             print("Plantnet OK")
             user = request.user if request.user.is_authenticated else None
