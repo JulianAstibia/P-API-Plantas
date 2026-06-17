@@ -32,7 +32,7 @@ def identificar_planta(img):
     except requests.RequestException as e:
         raise PlantnetError (f"Error al conectar con PlantNet: {str(e)}")
     except Exception as e:
-        raise (f"Error inesperado: {str(e)}")
+        raise PlantnetError (f"Error inesperado: {str(e)}")
 
     resultados = data.get("results", [])
 

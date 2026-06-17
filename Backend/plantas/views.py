@@ -18,7 +18,7 @@ class BuscarPlantaView(APIView):
 
     def get(self, request):
         nombre = request.query_params.get("search") or request.query_params.get("q")
-        
+        print("iniciando busqueda por nombre")
         if not nombre:
             return Response (
                 {"error": "Debes enviar ?search=nombre_planta"},
