@@ -31,23 +31,23 @@ class BuscarPlantaView(APIView):
             user = request.user if request.user.is_authenticated else None
             data= buscar_planta(nombre, user)
 
-            # Traducimos al español
-            try:
-                campos_a_traducir = [
-                    "common_name"
-                ]
+            # # Traducimos al español
+            # try:
+            #     campos_a_traducir = [
+            #         "common_name"
+            #     ]
 
-                if "data" in data:
-                    for planta in data["data"]:
-                        for campo in campos_a_traducir:
-                            if planta.get(campo):
-                                planta[campo] = traducir(
-                                    planta[campo],
-                                    tr_es
-                                )
+            #     if "data" in data:
+            #         for planta in data["data"]:
+            #             for campo in campos_a_traducir:
+            #                 if planta.get(campo):
+            #                     planta[campo] = traducir(
+            #                         planta[campo],
+            #                         tr_es
+            #                     )
 
-            except Exception as e:
-                pass
+            # except Exception as e:
+            #     pass
 
             return Response(data, status=status.HTTP_200_OK)
         
@@ -108,21 +108,21 @@ class IdentificarPlantaView(APIView):
                     if data.get("data"):
                         break
             
-            try:
-                tr_es = "es"
-                campos_a_traducir = [
-                    "common_name"
-                ]
-                if "data" in data:
-                    for planta in data["data"]:
-                        for campo in campos_a_traducir:
-                            if planta.get(campo):
-                                planta[campo] = traducir(
-                                    planta[campo],
-                                    tr_es
-                                )
-            except Exception:
-                pass
+            # try:
+            #     tr_es = "es"
+            #     campos_a_traducir = [
+            #         "common_name"
+            #     ]
+            #     if "data" in data:
+            #         for planta in data["data"]:
+            #             for campo in campos_a_traducir:
+            #                 if planta.get(campo):
+            #                     planta[campo] = traducir(
+            #                         planta[campo],
+            #                         tr_es
+            #                     )
+            # except Exception:
+            #     pass
 
             return Response({
                 "probabilidad": probabilidad,
